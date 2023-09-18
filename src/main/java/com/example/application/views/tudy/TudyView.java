@@ -6,13 +6,12 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
 import com.vaadin.flow.component.checkbox.CheckboxGroupVariant;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
@@ -86,9 +85,17 @@ public class TudyView extends VerticalLayout {
         horizontalLayout.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
         tudyListView.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
 
+        //add to scroller
+        Scroller scroller=new Scroller(new Div(tudyListView));
+        scroller.setScrollDirection(Scroller.ScrollDirection.VERTICAL);
+        scroller.getStyle()
+                .set("border-bottom", "1px solid var(--lumo-contrast-20pct)")
+                .set("padding", "var(--lumo-space-m)");
+        scroller.setWidthFull();
+
 
         //Now add all components to main vertical layout
-        add(title,tudyListView,horizontalLayout);
+        add(title,scroller,horizontalLayout);
 
 
 
