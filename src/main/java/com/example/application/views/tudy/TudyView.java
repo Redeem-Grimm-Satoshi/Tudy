@@ -47,6 +47,9 @@ public class TudyView extends VerticalLayout {
         VerticalLayout tudyListView=new VerticalLayout();
         HorizontalLayout horizontalLayout=new HorizontalLayout();
         list=new TextField("Task");
+        list.setPlaceholder("Enter Task");
+        list.setRequired(true);
+        list.setTooltipText("You can input your task here");
         add=new Button("Add");
         clear=new Button("Clear");
 
