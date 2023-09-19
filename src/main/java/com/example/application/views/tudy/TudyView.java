@@ -87,7 +87,9 @@ public class TudyView extends VerticalLayout {
 
         //when clear button click, this happens
         clear.addClickListener(e->{
-            tudyListView.removeAll();
+
+             tudyListView.removeAll();
+             Notification.show("List Cleared!");
 
         });
 
