@@ -1,6 +1,7 @@
 package com.example.application.views.tudy;
 
 import com.example.application.views.MainLayout;
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
@@ -55,6 +56,8 @@ public class TudyView extends VerticalLayout {
 
         //button variants
         add.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        add.addClickShortcut(Key.ENTER);
+        clear.addClickShortcut(Key.BACKSPACE);
 
         //title
         H1 title=new H1("Your Tudy List");
@@ -75,11 +78,16 @@ public class TudyView extends VerticalLayout {
 
             //make sure task is not empty
             if(list.isEmpty()){Notification.show("Task Can't Be Empty!");
-            }else{tudyListView.add(taskList);}
+            }else{
+                list.clear();
+                tudyListView.add(taskList);
+
+            }
         });
 
         //when clear button click, this happens
         clear.addClickListener(e->{
+            tudyListView.removeAll();
 
         });
 
@@ -96,12 +104,8 @@ public class TudyView extends VerticalLayout {
                 .set("padding", "var(--lumo-space-m)");
         scroller.setWidthFull();
 
-
         //Now add all components to main vertical layout
         add(title,scroller,horizontalLayout);
-
-
-
 
     }
 
