@@ -75,16 +75,16 @@ public class TudyView extends VerticalLayout {
             taskList=new CheckboxGroup<>();
             taskList.setItems(list.getValue());
             taskList.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
-            HorizontalLayout horizontalLayout1=new HorizontalLayout();
+            HorizontalLayout expireLayout=new HorizontalLayout();
             H6 time=new H6("Expires at " );
-            horizontalLayout1.add(taskList,time);
-            horizontalLayout1.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
+            expireLayout.add(taskList,time);
+            expireLayout.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
             //make sure task is not empty
             if(list.isEmpty()){Notification.show("Task Can't Be Empty!");
             }else{
                 list.clear();
-                tudyListView.add(horizontalLayout1);
+                tudyListView.add(expireLayout);
 
             }
         });
