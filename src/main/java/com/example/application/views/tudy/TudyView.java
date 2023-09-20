@@ -15,12 +15,14 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.timepicker.TimePicker;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
 
 import java.awt.*;
+import java.time.LocalTime;
 
 @PageTitle("Tudy")
 @Route(value = "tudy", layout = MainLayout.class)
@@ -76,7 +78,12 @@ public class TudyView extends VerticalLayout {
             taskList.setItems(list.getValue());
             taskList.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
             HorizontalLayout expireLayout=new HorizontalLayout();
-            H6 time=new H6("Expires at " );
+
+            //display time
+            TimePicker time=new TimePicker();
+            time.setLabel("Expires at");
+            time.setValue(LocalTime.now());
+
             expireLayout.add(taskList,time);
             expireLayout.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
