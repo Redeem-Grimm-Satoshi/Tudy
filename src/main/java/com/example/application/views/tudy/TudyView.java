@@ -7,6 +7,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
 import com.vaadin.flow.component.checkbox.CheckboxGroupVariant;
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.notification.Notification;
@@ -83,6 +84,9 @@ public class TudyView extends VerticalLayout {
             TimePicker time=new TimePicker();
             time.setLabel("Expires at");
             time.setValue(LocalTime.now());
+
+            //date picker
+            DatePicker start=new DatePicker("Start");
 
             expireLayout.add(taskList,time);
             expireLayout.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
