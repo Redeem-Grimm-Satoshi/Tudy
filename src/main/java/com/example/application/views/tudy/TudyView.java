@@ -21,6 +21,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import org.atmosphere.interceptor.AtmosphereResourceStateRecovery;
 
 import java.awt.*;
 import java.time.LocalTime;
@@ -32,9 +33,11 @@ public class TudyView extends VerticalLayout {
 
     //TextField and Add button declaration
     private TextField list;
-    private Button add,clear,remove;
+    private Button add,clear;
 
     private CheckboxGroup<String> taskList;
+
+    private HorizontalLayout expireLayout;
 
     public TudyView() {
         setSpacing(false);
@@ -55,14 +58,14 @@ public class TudyView extends VerticalLayout {
         list.setRequired(true);
         list.setTooltipText("You can input your task here");
         add=new Button("Add");
-        remove=new Button("X");
         clear=new Button("Clear");
+
+
 
         //button variants
         add.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         add.addClickShortcut(Key.ENTER);
-        //clear.addClickShortcut(Key.BACKSPACE); Not Need, Cause headache
-        remove.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+
 
         //title
         H1 title=new H1("Your Tudy List");
@@ -80,18 +83,26 @@ public class TudyView extends VerticalLayout {
             taskList=new CheckboxGroup<>();
             taskList.setItems(list.getValue());
             taskList.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
-            HorizontalLayout expireLayout=new HorizontalLayout();
+            expireLayout=new HorizontalLayout();
+
 
             //display time
             TimePicker time=new TimePicker();
             time.setLabel("Expires at");
             time.setValue(LocalTime.now());
 
+
             //date picker
             DatePicker start=new DatePicker("Start");
             DatePicker end=new DatePicker("End");
 
-            expireLayout.add(taskList,time,start,end);
+            //remove button
+            Button remove=new Button("X");
+            remove.addClickShortcut(Key.DELETE);
+            remove.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+
+            expireLayout.add(taskList,time,start,end,remove);
             expireLayout.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
             //make sure task is not empty
@@ -110,6 +121,7 @@ public class TudyView extends VerticalLayout {
              Notification.show("List Cleared!");
 
         });
+
 
         //Make textfield and Button to be horizontally aligned
         horizontalLayout.add(list,add,clear);
