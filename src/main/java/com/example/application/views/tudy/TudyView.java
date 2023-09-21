@@ -32,7 +32,7 @@ public class TudyView extends VerticalLayout {
 
     //TextField and Add button declaration
     private TextField list;
-    private Button add,clear;
+    private Button add,clear,remove;
 
     private CheckboxGroup<String> taskList;
 
@@ -55,6 +55,7 @@ public class TudyView extends VerticalLayout {
         list.setRequired(true);
         list.setTooltipText("You can input your task here");
         add=new Button("Add");
+        remove=new Button("X");
         clear=new Button("Clear");
 
         //button variants
