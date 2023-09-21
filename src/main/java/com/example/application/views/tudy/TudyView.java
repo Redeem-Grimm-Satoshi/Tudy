@@ -61,7 +61,8 @@ public class TudyView extends VerticalLayout {
         //button variants
         add.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         add.addClickShortcut(Key.ENTER);
-        clear.addClickShortcut(Key.BACKSPACE);
+        //clear.addClickShortcut(Key.BACKSPACE); Not Need, Cause headache
+        remove.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
         //title
         H1 title=new H1("Your Tudy List");
