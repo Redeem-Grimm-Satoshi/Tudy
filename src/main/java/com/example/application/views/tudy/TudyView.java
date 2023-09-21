@@ -89,7 +89,7 @@ public class TudyView extends VerticalLayout {
             DatePicker start=new DatePicker("Start");
             DatePicker end=new DatePicker("End");
 
-            expireLayout.add(taskList,time);
+            expireLayout.add(taskList,time,start,end);
             expireLayout.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
             //make sure task is not empty
