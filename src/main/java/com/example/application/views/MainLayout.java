@@ -53,7 +53,7 @@ public class MainLayout extends AppLayout {
         SideNav nav = new SideNav();
 
         nav.addItem(new SideNavItem("Tudy", TudyView.class, LineAwesomeIcon.FILE.create()));
-        nav.addItem(new SideNavItem("Settings", SettingView.class, LineAwesomeIcon.FILE.create()));
+        nav.addItem(new SideNavItem("Settings", SettingView.class, LineAwesomeIcon.COG_SOLID.create()));
         nav.addItem(new SideNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
 
 
