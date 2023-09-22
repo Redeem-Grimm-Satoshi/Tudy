@@ -60,12 +60,9 @@ public class TudyView extends VerticalLayout {
         add=new Button("Add");
         clear=new Button("Clear");
 
-
-
         //button variants
         add.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         add.addClickShortcut(Key.ENTER);
-
 
         //title
         H1 title=new H1("Your Tudy List");
@@ -85,12 +82,10 @@ public class TudyView extends VerticalLayout {
             taskList.addThemeVariants(CheckboxGroupVariant.LUMO_VERTICAL);
             expireLayout=new HorizontalLayout();
 
-
             //display time
             TimePicker time=new TimePicker();
             time.setLabel("Expires at");
             time.setValue(LocalTime.now());
-
 
             //date picker
             DatePicker start=new DatePicker("Start");
@@ -101,7 +96,6 @@ public class TudyView extends VerticalLayout {
             remove.addClickShortcut(Key.DELETE);
             remove.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
-
             expireLayout.add(taskList,time,start,end,remove);
             expireLayout.setDefaultVerticalComponentAlignment(Alignment.BASELINE);
 
@@ -109,8 +103,12 @@ public class TudyView extends VerticalLayout {
             if(list.isEmpty()){Notification.show("Task Can't Be Empty!");
             }else{
                 list.clear();
+                //this issue needs to be fixed
+                //remove button action
+                remove.addClickListener(x->{
+                    expireLayout.removeAll();
+                });
                 tudyListView.add(expireLayout);
-
             }
         });
 
@@ -121,7 +119,6 @@ public class TudyView extends VerticalLayout {
              Notification.show("List Cleared!");
 
         });
-
 
         //Make textfield and Button to be horizontally aligned
         horizontalLayout.add(list,add,clear);
@@ -140,5 +137,4 @@ public class TudyView extends VerticalLayout {
         add(title,scroller,horizontalLayout);
 
     }
-
 }
